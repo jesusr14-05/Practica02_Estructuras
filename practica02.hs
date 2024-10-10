@@ -20,19 +20,22 @@ sumaLista (x : xs) = x + sumaLista(xs)
 -- Función agregarElemento
 
 agregaElemento :: [a] -> a -> Bool -> [a]
-agregaElemento (x : xs) a True = a:(x:xs) 
-agregaElemento (x : xs) a False = (x:xs) ++[a]
+agregaElemento lista a bool =
+                if bool
+                then a:lista
+                else lista++[a]
 
 -- 4. Máximo de una lista.
 -- Función maximoLista
 maximoLista :: (Num a, Ord a) => [a] -> a
-maximoLista [] = 0
+maximoLista [] = error "no puede ingresar una lista que este vacia"
+maximoLista [x] = x
 maximoLista (x : xs)=
     if x > maximoLista(xs)
         then x 
         else maximoLista(xs)
 
--- 5. Recuperar un elemento de una lista de acuerdo a su  ́ındice.
+-- 5. Recuperar un elemento de una lista de acuerdo a su  índice.
 -- Función indíce
 indice :: [a] -> Int -> a
 indice [] index = error "No existe elementos a buscar en la lista vacia"
