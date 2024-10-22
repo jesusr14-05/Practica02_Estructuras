@@ -38,10 +38,12 @@ maximoLista (x : xs)=
 -- 5. Recuperar un elemento de una lista de acuerdo a su  índice.
 -- Función indíce
 indice :: [a] -> Int -> a
-indice [] index = error "No existe elementos a buscar en la lista vacia"
-indice (x:xs) index = if index == 0
-    then x
-    else indice xs ( index -1)
+indice [] index = error "no se puede ingresar una lista vacia"
+indice (x:xs) index = if index < 0 || index > longitud(x:xs)-1
+    then error "el indice no es valido"
+    else if index == 0
+        then x
+        else indice xs ( index -1)
 -- Funcíon divisores
 
 divisores :: Int -> [Int]
